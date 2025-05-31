@@ -4,10 +4,15 @@ This is my first mod ever.
 It removes the big hotbars numbers when no skill/item is assigned.
 It's a simple mod I made for myself with the intention of learning.
 
+Before:
+![image](https://github.com/user-attachments/assets/4abe4005-f7f4-4441-b246-3d8de9f58cf4)
+
+After:
+![image](https://github.com/user-attachments/assets/90f8d8e6-f245-4093-b377-b61b0ddb9fb2)
+
 ## How to install
 
 BepInEx plugin required: https://github.com/BepInEx/BepInEx
-
 
 1. Copy the compiled DLL into BepInEx plugins folder.
 2. Run the game and the mod will automatically clean the hotbar numbers.
