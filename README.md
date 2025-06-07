@@ -28,3 +28,5 @@ Now it's working on Mizuki's [Extended Hotbars](https://github.com/MizukiBelhi/E
 ![image](https://github.com/user-attachments/assets/40c43386-577a-464a-b7d6-e9c7d7ed90d0)
 
 NOTE: When you press the Extended Hotbars hotkey to extend it, a small stuttering may occur, but only for that frame. It's almost imperceptible, and considering that we don't need to keep extending the hotbars during gameplay, it's not a big deal. Since the Extended Hotbars mod saves its state (whether it's extended or not), you probably won't see this. But if I can, I'll improve the code to mitigate this.
+
+NOTE2: When using the second hotbar (from the base game) the Extended Hotbars mod won't show its hotkeys. So it's better to use the ones from Extended Hotbars mod (alt+1 or 2 by default) instead of the one from the base game.
