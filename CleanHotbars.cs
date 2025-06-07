@@ -3,6 +3,7 @@ using System.Collections;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ExtendedHotbars;
 
 namespace clean_hotbars
 {
@@ -25,12 +26,12 @@ namespace clean_hotbars
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             sceneName = scene.name;
-           
+
             if (sceneName == "Menu" || sceneName == "LoadScene")
             {
                 return;
             }
-            
+
             for (int i = 1; i <= 10; i++)
             {
                 string hkName = $"HK{i}";
@@ -42,6 +43,17 @@ namespace clean_hotbars
             }
 
             StartCoroutine(CheckSecondaryHotbar());
+            StartCoroutine(CheckExtendedHotbar());
+        }
+
+        private bool extendedHotbarDetected = false;
+
+        private void Update()
+        {
+            if (ExtendedHotbarsPlugin.ExtendBarHotkey != null && ExtendedHotbarsPlugin.ExtendBarHotkey.Value.IsUp())
+            {
+                StartCoroutine(CheckExtendedHotbar());
+            }
         }
 
         private IEnumerator CheckSecondaryHotbar()
@@ -66,7 +78,21 @@ namespace clean_hotbars
             }
         }
 
-        private void ClearHotkey(GameObject hkObj)
+        private IEnumerator CheckExtendedHotbar()
+        {
+            float timeout = 0.02f;
+            float timer = 0f;
+
+            while (timer < timeout)
+            {
+                ClearExtendedHotbars();
+
+                yield return new WaitForSeconds(0.01f);
+                timer += 0.01f;
+            }
+        }
+
+        private static void ClearHotkey(GameObject hkObj)
         {
             var hkComp = hkObj.GetComponent("Hotkeys");
             if (hkComp != null)
@@ -75,6 +101,18 @@ namespace clean_hotbars
                 if (hkField != null)
                 {
                     hkField.SetValue(hkComp, "");
+                }
+            }
+        }
+
+        private static void ClearExtendedHotbars()
+        {
+            var allTransforms = Resources.FindObjectsOfTypeAll<Transform>();
+            foreach (var tr in allTransforms)
+            {
+                if (tr.name == "HK1(Clone)" && tr.parent != null && tr.parent.name == "Hotkeys(Clone)")
+                {
+                    ClearHotkey(tr.gameObject);
                 }
             }
         }
