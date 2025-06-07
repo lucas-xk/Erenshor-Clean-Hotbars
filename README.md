@@ -22,5 +22,9 @@ BepInEx plugin required: https://github.com/BepInEx/BepInEx
 
 For the mod to take effect to the secondary hotbar, one must change to it within 5 seconds after entering the game, or just change zones while it's active.
 
-Currently the mod is not removing the numbers from Mizuki's Extended Hotbars mod.
-I'm working on it.
+Now it's working on Mizuki's [Extended Hotbars](https://github.com/MizukiBelhi/Erenshor-ExtendedHotbars/releases/tag/1.0.1) mod!
+
+![image](https://github.com/user-attachments/assets/1dce0ea6-4870-4515-a97d-3f1c4d39af31)
+![image](https://github.com/user-attachments/assets/40c43386-577a-464a-b7d6-e9c7d7ed90d0)
+
+NOTE: When you press the Extended Hotbars hotkey to extend it, a small stuttering may occur, but only for that frame. It's almost imperceptible, and considering that we don't need to keep extending the hotbars during gameplay, it's not a big deal. Since the Extended Hotbars mod saves its state (whether it's extended or not), you probably won't see this. But if I can, I'll improve the code to mitigate this.
