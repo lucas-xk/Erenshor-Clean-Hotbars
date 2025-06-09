@@ -17,7 +17,7 @@ After:
 BepInEx plugin required: https://github.com/BepInEx/BepInEx
 
 1. Download the mod [from here](https://github.com/lucas-xk/Erenshor-Clean-Hotbars/releases)
-   - clean-hotbars.dll      -> removes only the large numbers
+   - clean-hotbars.dll -> removes only the large numbers
    - clean-hotbars-plus.dll -> also removes the small shortcuts of the extra hotbars from the "Extended Hotbars" mod (see the difference in the screenshots below)
 3. Copy the compiled DLL into BepInEx plugins folder.
 4. Run the game and the mod will automatically clean the hotbar numbers.
