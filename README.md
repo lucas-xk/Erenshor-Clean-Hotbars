@@ -27,7 +27,6 @@ For the mod to take effect to the secondary hotbar, one must change to it within
 Now it's working on Mizuki's [Extended Hotbars](https://github.com/MizukiBelhi/Erenshor-ExtendedHotbars/releases/tag/1.0.1) mod!
 
 ![image](https://github.com/user-attachments/assets/1dce0ea6-4870-4515-a97d-3f1c4d39af31)
-![image](https://github.com/user-attachments/assets/40c43386-577a-464a-b7d6-e9c7d7ed90d0)
 ![image](https://github.com/user-attachments/assets/6380bcc6-bb56-4a63-9b94-91f753e8fbc9)
 
 
