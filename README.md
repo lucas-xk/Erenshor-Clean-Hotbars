@@ -17,8 +17,10 @@ After:
 BepInEx plugin required: https://github.com/BepInEx/BepInEx
 
 1. Download the mod [from here](https://github.com/lucas-xk/Erenshor-Clean-Hotbars/releases)
-2. Copy the compiled DLL into BepInEx plugins folder.
-3. Run the game and the mod will automatically clean the hotbar numbers.
+   - clean-hotbars.dll      -> removes only the large numbers
+   - clean-hotbars-plus.dll -> also removes the small shortcuts of the extra hotbars from the "Extended Hotbars" mod (see the difference in the screenshots below)
+3. Copy the compiled DLL into BepInEx plugins folder.
+4. Run the game and the mod will automatically clean the hotbar numbers.
 
 For the mod to take effect to the secondary hotbar, one must change to it within 5 seconds after entering the game, or just change zones while it's active.
 
