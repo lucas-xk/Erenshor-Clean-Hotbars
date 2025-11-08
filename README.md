@@ -1,6 +1,12 @@
 This mod's original feature was implemented in the vanilla game, and also in the Extended Hotbars mod. So this mod fell into disuse.
 
-However I made an update so now it removes the smaller numbers from the vanilla hotbar, since this numbers are bigger than before. Extended Hotbars mod has this feature as well.
+However, for those who prefer a cleaner hotbar UI, I made an update so now it removes the smaller numbers from the vanilla hotbar, since this numbers are bigger than before. Extended Hotbars mod has this feature as well.
+
+Before:<br>
+<img width="594" height="83" alt="image" src="https://github.com/user-attachments/assets/04144067-6463-422b-b630-b959ce978007" />
+
+After:<br>
+<img width="598" height="80" alt="image" src="https://github.com/user-attachments/assets/a7bba971-6729-4978-a6a3-63a9c6904812" />
 
 
 
@@ -41,4 +47,5 @@ Now it's working on Mizuki's [Extended Hotbars](https://github.com/MizukiBelhi/E
 NOTE: When you press the Extended Hotbars hotkey to extend it, a small stuttering may occur, but only for that frame. It's almost imperceptible, and considering that we don't need to keep extending the hotbars during gameplay, it's not a big deal. Since the Extended Hotbars mod saves its state (whether it's extended or not), you probably won't see this. But if I can, I'll improve the code to mitigate this.
 
 NOTE2: When using the second hotbar (from the base game) the Extended Hotbars mod won't show its hotkeys. So it's better to use the ones from Extended Hotbars mod (alt+1 or 2 by default) instead of the one from the base game.
+
 
