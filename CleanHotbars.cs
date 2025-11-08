@@ -1,14 +1,11 @@
 ﻿using BepInEx;
 using System.Collections;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using ExtendedHotbars;
 
 namespace clean_hotbars
 {
-    [BepInPlugin("lucasxk.erenshor.cleanhotbars", "Clean Hotbars", "1.0.0")]
-
+    [BepInPlugin("lucasxk.erenshor.cleanhotbars", "Clean Hotbars", "1.2.0")]
     public class CleanHotbars : BaseUnityPlugin
     {
         private void Awake()
@@ -28,32 +25,14 @@ namespace clean_hotbars
             sceneName = scene.name;
 
             if (sceneName == "Menu" || sceneName == "LoadScene")
-            {
                 return;
-            }
 
             for (int i = 1; i <= 10; i++)
             {
-                string hkName = $"HK{i}";
-                var hkObj = GameObject.Find($"UI/UIElements/Canvas/HotbarPar/Hotkeys/{hkName}");
-                if (hkObj != null)
-                {
-                    ClearHotkey(hkObj);
-                }
+                TryDestroyImageWithTMP($"UI/UIElements/Canvas/HotbarPar/Hotkeys/HK{i}");
             }
 
             StartCoroutine(CheckSecondaryHotbar());
-            StartCoroutine(CheckExtendedHotbar());
-        }
-
-        private bool extendedHotbarDetected = false;
-
-        private void Update()
-        {
-            if (ExtendedHotbarsPlugin.ExtendBarHotkey != null && ExtendedHotbarsPlugin.ExtendBarHotkey.Value.IsUp())
-            {
-                StartCoroutine(CheckExtendedHotbar());
-            }
         }
 
         private IEnumerator CheckSecondaryHotbar()
@@ -65,12 +44,7 @@ namespace clean_hotbars
             {
                 for (int i = 1; i <= 10; i++)
                 {
-                    string hkName = $"HK{i} (1)";
-                    var hkObj = GameObject.Find($"UI/UIElements/Canvas/HotbarPar/Hotkeys/{hkName}");
-                    if (hkObj != null)
-                    {
-                        ClearHotkey(hkObj);
-                    }
+                    TryDestroyImageWithTMP($"UI/UIElements/Canvas/HotbarPar/Hotkeys/HK{i} (1)");
                 }
 
                 yield return new WaitForSeconds(0.5f);
@@ -78,41 +52,21 @@ namespace clean_hotbars
             }
         }
 
-        private IEnumerator CheckExtendedHotbar()
+        private static void TryDestroyImageWithTMP(string hkPath)
         {
-            float timeout = 0.02f;
-            float timer = 0f;
+            var hkObj = GameObject.Find(hkPath);
+            if (hkObj == null)
+                return;
 
-            while (timer < timeout)
+            foreach (Transform child in hkObj.transform)
             {
-                ClearExtendedHotbars();
-
-                yield return new WaitForSeconds(0.01f);
-                timer += 0.01f;
-            }
-        }
-
-        private static void ClearHotkey(GameObject hkObj)
-        {
-            var hkComp = hkObj.GetComponent("Hotkeys");
-            if (hkComp != null)
-            {
-                var hkField = hkComp.GetType().GetField("savedStr", BindingFlags.Instance | BindingFlags.NonPublic);
-                if (hkField != null)
+                if (child.name == "Image")
                 {
-                    hkField.SetValue(hkComp, "");
-                }
-            }
-        }
-
-        private static void ClearExtendedHotbars()
-        {
-            var allTransforms = Resources.FindObjectsOfTypeAll<Transform>();
-            foreach (var tr in allTransforms)
-            {
-                if (tr.name == "HK1(Clone)" && tr.parent != null && tr.parent.name == "Hotkeys(Clone)")
-                {
-                    ClearHotkey(tr.gameObject);
+                    var textTMP = child.Find("Text (TMP)");
+                    if (textTMP != null)
+                    {
+                        Object.Destroy(child.gameObject);
+                    }
                 }
             }
         }
